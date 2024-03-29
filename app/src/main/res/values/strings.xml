@@ -9,5 +9,13 @@
     <string name="radio_low">Low</string>
     <string name="add_task">Add a Task</string>
     <string name="placeholder_name">Ex : do the shopping</string>
+
+    <string name="todo_list">Todo List</string>
+
+    <string name="menuinfo">Add task</string>
+
+    <string name="quitter">Quit the application</string>
+
     <string name="placeholder_desc">Ex : buy milk, chocolate, etc…</string>
+
 </resources>

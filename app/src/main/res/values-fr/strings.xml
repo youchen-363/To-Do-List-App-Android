@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Liste à faire</string>
+
+    <string name="todo_list">Liste à faire</string>
+
+    <string name="menuinfo">Ajouter tâche</string>
+
+    <string name="quitter">Quitter l\'application</string>
+
+</resources>
