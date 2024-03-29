@@ -1,3 +1,11 @@
 <resources>
+
     <string name="app_name">Todo List</string>
+
+    <string name="todo_list">Todo List</string>
+
+    <string name="menuinfo">Add task</string>
+
+    <string name="quitter">Quit the application</string>
+
 </resources>
