@@ -1,11 +1,21 @@
 <resources>
-
     <string name="app_name">Todo List</string>
+    <string name="title_add">Add a Task</string>
+    <string name="title_name_task">Name of the task</string>
+    <string name="title_desc_task">Description of the task</string>
+    <string name="title_priority">Priority of the task</string>
+    <string name="radio_high">High</string>
+    <string name="radio_normal">Normal</string>
+    <string name="radio_low">Low</string>
+    <string name="add_task">Add a Task</string>
+    <string name="placeholder_name">Ex : do the shopping</string>
 
     <string name="todo_list">Todo List</string>
 
     <string name="menuinfo">Add task</string>
 
     <string name="quitter">Quit the application</string>
+
+    <string name="placeholder_desc">Ex : buy milk, chocolate, etc…</string>
 
 </resources>
