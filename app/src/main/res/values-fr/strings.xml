@@ -2,11 +2,31 @@
 <resources>
 
     <string name="app_name">Liste à faire</string>
-
     <string name="todo_list">Liste à faire</string>
-
     <string name="menuinfo">Ajouter tâche</string>
-
     <string name="quitter">Quitter l\'application</string>
+
+    <string name="title_add">Ajouter une tâche</string>
+    <string name="title_name_task">Nom de la tâche</string>
+    <string name="title_desc_task">Description de la tâche</string>
+    <string name="title_priority">Priorité de la tâche</string>
+    <string name="radio_high">Urgent</string>
+    <string name="radio_normal">Normal</string>
+    <string name="radio_low">Faible</string>
+    <string name="add_task">Ajouter une tâche</string>
+    <string name="placeholder_name">Ex : Faire les courses</string>
+    <string name="placeholder_desc">Ex : Acheter du lait, du chocolat, etc… </string>
+
+    <string name="title_date">Date de la tâche</string>
+    <string name="fieldName">Nom</string>
+    <string name="fieldDesc">Description</string>
+    <string name="fieldPriority">Priorité</string>
+    <string name="fieldDate">Date</string>
+    <string name="title_detail">Tâche</string>
+    <string name="delete_task">Supprimer la tâche</string>
+    <string name="modify_task">Modifier la tâche</string>
+    <string name="confirm_message">Êtes vous sur de vouloir supprimer cette tâche ?</string>
+    <string name="confirm">Oui</string>
+    <string name="cancel">Non</string>
 
 </resources>
