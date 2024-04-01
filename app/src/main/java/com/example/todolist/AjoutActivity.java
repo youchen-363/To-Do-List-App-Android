@@ -85,7 +85,9 @@ public class AjoutActivity extends AppCompatActivity{
                 values.put(TableEntry.COLUMN_NAME_DONE, 0);
 
                 long newRowId = db.insert(TableEntry.TABLE_NAME, null, values);
-
+                setResult(RESULT_OK);
+                finish();
+                /*
                 //Afficher le contenu de la base de donnée dans la console
 
                 db = dbHelper.getReadableDatabase();
@@ -124,6 +126,7 @@ public class AjoutActivity extends AppCompatActivity{
                     contenuBase.add(itemId);
                 }
                 cursor.close();
+            */
 
             }
         });

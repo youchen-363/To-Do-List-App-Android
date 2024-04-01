@@ -1,10 +1,18 @@
 package com.example.todolist;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -22,9 +30,20 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-//        setMenuBackgroundColor(R.color.white);
-    }
 
+        Button boutonAdd = findViewById(R.id.btnAjouter);
+        boutonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AjoutActivity.class);
+                try {
+                    startActivityForResult(intent, 100);
+                }catch(ActivityNotFoundException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
     public void setMenuBackgroundColor(int color){
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(color)));
     }
@@ -34,5 +53,14 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.monmenu, menu);
         return true;
     }
-}
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) {
+            if (resultCode == RESULT_OK) {
+                Toast.makeText(MainActivity.this, "Tâche ajoutée avec succès", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+};
 
