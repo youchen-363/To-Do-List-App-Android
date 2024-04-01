@@ -2,7 +2,7 @@ package com.example.todolist;
 
 import java.sql.Date;
 
-public class Tache {
+public class Task {
 
     public enum Priorite {
         URGENT, NORMALE, FAIBLE
@@ -14,7 +14,7 @@ public class Tache {
     private Date date;
     private boolean statut;
 
-    public Tache(String nom, String desc, Date date, Priorite priorite){
+    public Task(String nom, String desc, Date date, Priorite priorite){
         this.nom = nom;
         this.desc = desc;
         this.date = date;

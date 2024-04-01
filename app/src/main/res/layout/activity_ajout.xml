@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AjoutActivity"
+    tools:context=".AddActivity"
     android:background="@color/white">
 
     <TextView
@@ -33,12 +33,13 @@
         android:layout_marginBottom="20dp"
         android:ems="10"
         android:fontFamily="@font/asap"
-        android:hint="@string/ex_shopping"
+        android:hint="@string/placeholder_shopping"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/labelDescTask"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelNameTask" />
+        app:layout_constraintTop_toBottomOf="@+id/labelNameTask"
+        android:autofillHints="@string/placeholder_shopping" />
 
     <EditText
         android:id="@+id/textDescTask"
@@ -54,7 +55,8 @@
         app:layout_constraintBottom_toTopOf="@+id/textPriorityTask"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelDescTask" />
+        app:layout_constraintTop_toBottomOf="@+id/labelDescTask"
+        android:autofillHints="@string/placeholder_desc" />
 
     <TextView
         android:id="@+id/labelNameTask"
@@ -104,14 +106,10 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="367dp"
-        android:layout_marginBottom="687dp"
         android:contentDescription="@string/todo_list"
         android:src="@drawable/ic_back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/titleAjout"
+        app:layout_constraintEnd_toStartOf="@+id/titleAjout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -132,7 +130,7 @@
             android:id="@+id/radio_high"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/asap"
             android:text="@string/high" />
 
@@ -140,7 +138,7 @@
             android:id="@+id/radio_normal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:checked="true"
             android:fontFamily="@font/asap"
             android:text="@string/normal" />
@@ -149,7 +147,7 @@
             android:id="@+id/radio_low"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/asap"
             android:text="@string/low" />
     </RadioGroup>

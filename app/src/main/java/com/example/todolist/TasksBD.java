@@ -2,10 +2,10 @@ package com.example.todolist;
 
 import android.provider.BaseColumns;
 
-public final class TachesBD {
+public final class TasksBD {
     // To prevent someone from accidentally instantiating the contract class,
     // make the constructor private.
-    private TachesBD() {}
+    private TasksBD() {}
 
     /* Inner class that defines the table contents */
     public static class TableEntry implements BaseColumns {

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AjoutActivity">
+    tools:context=".AddActivity">
 
     <TextView
         android:id="@+id/labelNameTask"
@@ -14,7 +14,7 @@
         android:layout_marginStart="55dp"
         android:layout_marginEnd="250dp"
         android:fontFamily="@font/asap_medium"
-        android:text="@string/title_name_task"
+        android:text="@string/name_task"
         android:textColor="#f85f6a"
         app:layout_constraintBottom_toTopOf="@+id/fieldName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         android:layout_marginStart="55dp"
         android:layout_marginEnd="215dp"
         android:fontFamily="@font/asap_medium"
-        android:text="@string/title_desc_task"
+        android:text="@string/desc_task"
         android:textColor="#f85f6a"
         app:layout_constraintBottom_toTopOf="@+id/fieldDesc"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,7 @@
         android:layout_marginStart="55dp"
         android:layout_marginEnd="241dp"
         android:fontFamily="@font/asap_medium"
-        android:text="@string/title_priority"
+        android:text="@string/priority_task"
         android:textColor="#F85F6A"
         app:layout_constraintBottom_toTopOf="@+id/fieldPriority"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="351dp"
-        android:contentDescription="@string/app_name"
+        android:contentDescription="@string/todo_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -68,7 +68,7 @@
         android:layout_marginStart="55dp"
         android:layout_marginEnd="257dp"
         android:fontFamily="@font/asap_medium"
-        android:text="@string/title_date"
+        android:text="@string/date_task"
         android:textColor="#F85F6A"
         app:layout_constraintBottom_toTopOf="@+id/fieldDate"
         app:layout_constraintEnd_toEndOf="parent"
@@ -121,7 +121,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginEnd="326dp"
         android:fontFamily="@font/asap"
-        android:text="@string/fieldDate"
+        android:text="@string/date"
         app:layout_constraintBottom_toTopOf="@+id/btn_modify"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
