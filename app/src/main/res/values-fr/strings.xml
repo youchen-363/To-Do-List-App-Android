@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Liste à faire</string>
-    <string name="todo_list">Liste à faire</string>
-    <string name="menuinfo">Ajouter tâche</string>
-    <string name="quitter">Quitter l\'application</string>
+    <string name="todo_list">Todo List</string>
+    <string name="high">Haut</string>
+    <string name="normal">Normale</string>
+    <string name="low">Bas</string>
+    <string name="quit_app">Quitter l\'application</string>
+    <string name="stats">Statistiques</string>
+    <string name="date">Date</string>
+    <string name="task_done">Réalisées</string>
+    <string name="task_todo">À faire</string>
 
-    <string name="title_add">Ajouter une tâche</string>
-    <string name="title_name_task">Nom de la tâche</string>
-    <string name="title_desc_task">Description de la tâche</string>
-    <string name="title_priority">Priorité de la tâche</string>
-    <string name="radio_high">Urgent</string>
-    <string name="radio_normal">Normal</string>
-    <string name="radio_low">Faible</string>
+    <string name="name_task">Nom de la tâche</string>
+    <string name="desc_task">Description de la tâche</string>
+    <string name="priority_task">Priorité de la tâche</string>
     <string name="add_task">Ajouter une tâche</string>
-    <string name="placeholder_name">Ex : Faire les courses</string>
+    <string name="placeholder_shopping">Ex : Faire les courses</string>
     <string name="placeholder_desc">Ex : Acheter du lait, du chocolat, etc… </string>
 
-    <string name="title_date">Date de la tâche</string>
+    <string name="date_task">Date de la tâche</string>
     <string name="fieldName">Nom</string>
     <string name="fieldDesc">Description</string>
     <string name="fieldPriority">Priorité</string>
-    <string name="fieldDate">Date</string>
     <string name="title_detail">Tâche</string>
     <string name="delete_task">Supprimer la tâche</string>
     <string name="modify_task">Modifier la tâche</string>

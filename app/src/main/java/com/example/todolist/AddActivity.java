@@ -1,8 +1,6 @@
 package com.example.todolist;
 
-import android.app.AlertDialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
@@ -20,13 +18,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import com.example.todolist.TachesBD.TableEntry;
+import com.example.todolist.TasksBD.TableEntry;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AjoutActivity extends AppCompatActivity{
-    private TachesDBHelper dbHelper;
+public class AddActivity extends AppCompatActivity{
+    private TasksDBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +35,7 @@ public class AjoutActivity extends AppCompatActivity{
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        this.dbHelper = new TachesDBHelper(this);
+        this.dbHelper = new TasksDBHelper(this);
 
         Button boutonAdd = findViewById(R.id.btn_addTask);
         boutonAdd.setOnClickListener(new View.OnClickListener() {
