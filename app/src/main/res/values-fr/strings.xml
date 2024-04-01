@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Liste à faire</string>
-
-    <string name="todo_list">Liste à faire</string>
-
-    <string name="menuinfo">Ajouter tâche</string>
-
-    <string name="quitter">Quitter l\'application</string>
+    <string name="todo_list">Todo List</string>
+    <string name="name_task">Nom du tâche</string>
+    <string name="desc_task">Description d\'une tâche</string>
+    <string name="priority_task">Priority of the task</string>
+    <string name="high">Haut</string>
+    <string name="normal">Normale</string>
+    <string name="low">Bas</string>
+    <string name="ex_shopping">Ex : faire du shopping</string>
+    <string name="add_task">Ajouter tâche</string>
+    <string name="quit_app">Quitter l\'application</string>
+    <string name="placeholder_desc">Ex : acheter du lait, du chocolat, etc…</string>
+    <string name="stats">Statistiques</string>
+    <string name="date">Date</string>
+    <string name="task_done">Tâches réalisées</string>
+    <string name="task_todo">Tâches à faire</string>
 
 </resources>
