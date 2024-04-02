@@ -9,12 +9,11 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="365dp"
-        android:layout_height="538dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="366dp" />
 
     <TextView
         android:id="@+id/titre"

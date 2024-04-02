@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity">
+
+    <TextView
+        android:id="@+id/labelNameTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="250dp"
+        android:fontFamily="@font/asap_medium"
+        android:text="@string/name_task"
+        android:textColor="#f85f6a"
+        app:layout_constraintBottom_toTopOf="@+id/fieldName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleDetail" />
+
+    <TextView
+        android:id="@+id/labelDescTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="215dp"
+        android:fontFamily="@font/asap_medium"
+        android:text="@string/desc_task"
+        android:textColor="#f85f6a"
+        app:layout_constraintBottom_toTopOf="@+id/fieldDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textPriorityTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="241dp"
+        android:fontFamily="@font/asap_medium"
+        android:text="@string/priority_task"
+        android:textColor="#F85F6A"
+        app:layout_constraintBottom_toTopOf="@+id/fieldPriority"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="351dp"
+        android:contentDescription="@string/todo_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back" />
+
+
+    <TextView
+        android:id="@+id/labelDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="257dp"
+        android:fontFamily="@font/asap_medium"
+        android:text="@string/date_task"
+        android:textColor="#F85F6A"
+        app:layout_constraintBottom_toTopOf="@+id/fieldDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/fieldName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="318dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/asap"
+        android:text="@string/fieldName"
+        app:layout_constraintBottom_toTopOf="@+id/labelDescTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelNameTask" />
+
+    <TextView
+        android:id="@+id/fieldDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="284dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/asap"
+        android:text="@string/fieldDesc"
+        app:layout_constraintBottom_toTopOf="@+id/textPriorityTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/fieldPriority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="310dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/asap"
+        android:text="@string/fieldPriority"
+        app:layout_constraintBottom_toTopOf="@+id/labelDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/fieldDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="326dp"
+        android:fontFamily="@font/asap"
+        android:text="@string/date"
+        app:layout_constraintBottom_toTopOf="@+id/btn_modify"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/titleDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="299dp"
+        android:layout_marginBottom="60dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="@string/title_detail"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/labelNameTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_modify"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/button_custom_white"
+        android:text="@string/modify_task"
+        android:textColor="#f85f6a"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldDate" />
+
+    <Button
+        android:id="@+id/btn_Delete"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="187dp"
+        android:background="@drawable/button_custom"
+        android:text="@string/delete_task"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_modify" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
