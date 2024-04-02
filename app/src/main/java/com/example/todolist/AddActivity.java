@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 
 import androidx.activity.EdgeToEdge;
@@ -71,58 +73,31 @@ public class AddActivity extends AppCompatActivity{
                 int day = selectedCalendar.get(Calendar.DAY_OF_MONTH);
 
                 String dateTask = year + "-" + month + "-" + day;
+                if (!nameTask.isEmpty()){
+                    // Ajouter une ligne à la base de donnée
+                    SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-                // Ajouter une ligne à la base de donnée
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                    ContentValues values = new ContentValues();
+                    values.put(TableEntry.COLUMN_NAME_NAME, nameTask);
+                    values.put(TableEntry.COLUMN_NAME_DESCRIPTION, descTask);
+                    values.put(TableEntry.COLUMN_NAME_PRIORITY, prio);
+                    values.put(TableEntry.COLUMN_NAME_DATE, dateTask);
+                    values.put(TableEntry.COLUMN_NAME_DONE, 0);
 
-                ContentValues values = new ContentValues();
-                values.put(TableEntry.COLUMN_NAME_NAME, nameTask);
-                values.put(TableEntry.COLUMN_NAME_DESCRIPTION, descTask);
-                values.put(TableEntry.COLUMN_NAME_PRIORITY, prio);
-                values.put(TableEntry.COLUMN_NAME_DATE, dateTask);
-                values.put(TableEntry.COLUMN_NAME_DONE, 0);
-
-                long newRowId = db.insert(TableEntry.TABLE_NAME, null, values);
-
-                //Afficher le contenu de la base de donnée dans la console
-
-                db = dbHelper.getReadableDatabase();
-
-                String[] projection = {
-                        TableEntry._ID,
-                        TableEntry.COLUMN_NAME_NAME,
-                        TableEntry.COLUMN_NAME_DESCRIPTION,
-                        TableEntry.COLUMN_NAME_PRIORITY,
-                        TableEntry.COLUMN_NAME_DATE,
-                        TableEntry.COLUMN_NAME_DONE
-                };
-
-                Cursor cursor = db.query(
-                        TableEntry.TABLE_NAME,
-                        projection,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
-                );
-
-                List<Long> contenuBase = new ArrayList<>();
-                while (cursor.moveToNext()) {
-                    long itemId = cursor.getLong(cursor.getColumnIndexOrThrow(TableEntry._ID));
-                    String name = cursor.getString(cursor.getColumnIndexOrThrow(TableEntry.COLUMN_NAME_NAME));
-                    String description = cursor.getString(cursor.getColumnIndexOrThrow(TableEntry.COLUMN_NAME_DESCRIPTION));
-                    int priority = cursor.getInt(cursor.getColumnIndexOrThrow(TableEntry.COLUMN_NAME_PRIORITY));
-                    String date = cursor.getString(cursor.getColumnIndexOrThrow(TableEntry.COLUMN_NAME_DATE));
-                    int done = cursor.getInt(cursor.getColumnIndexOrThrow(TableEntry.COLUMN_NAME_DONE));
-
-                    System.out.println("ID: " + itemId + ", Name: " + name + ", Description: " + description +
-                            ", Priority: " + priority + ", Date: " + date + ", Done: " + done);
-
-                    contenuBase.add(itemId);
+                    long newRowId = db.insert(TableEntry.TABLE_NAME, null, values);
+                    setResult(RESULT_OK);
+                    finish();
+                }else{
+                    Toast.makeText(AddActivity.this, getString(R.string.task_incomplete), Toast.LENGTH_SHORT).show();
                 }
-                cursor.close();
+            }
+        });
 
+        ImageView boutonBack = findViewById(R.id.btnBack);
+        boutonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

@@ -29,4 +29,8 @@
     <string name="confirm">Oui</string>
     <string name="cancel">Non</string>
 
+    <string name="task_added">Tâche ajoutée avec succès</string>
+    <string name="task_cancel">Tâche annulée</string>
+    <string name="task_incomplete">Veuillez renseigner une nom de tâche</string>
+
 </resources>
