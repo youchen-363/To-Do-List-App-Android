@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100) {
             if (resultCode == RESULT_OK) {
-                Toast.makeText(MainActivity.this, getString(R.string.task_added), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, data.getStringExtra("valeur"), Toast.LENGTH_SHORT).show();
                 AfficherListeTaches();
             }else{
                 Toast.makeText(MainActivity.this, getString(R.string.task_cancel), Toast.LENGTH_SHORT).show();

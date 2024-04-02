@@ -1,6 +1,7 @@
 package com.example.todolist;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
@@ -85,7 +86,10 @@ public class AddActivity extends AppCompatActivity{
                     values.put(TableEntry.COLUMN_NAME_DONE, 0);
 
                     long newRowId = db.insert(TableEntry.TABLE_NAME, null, values);
-                    setResult(RESULT_OK);
+
+                    Intent retour = new Intent();
+                    retour.putExtra("valeur",getString(R.string.task_added));
+                    setResult(RESULT_OK, retour);
                     finish();
                 }else{
                     Toast.makeText(AddActivity.this, getString(R.string.task_incomplete), Toast.LENGTH_SHORT).show();
