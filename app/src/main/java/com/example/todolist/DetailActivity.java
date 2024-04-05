@@ -26,6 +26,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class DetailActivity extends AppCompatActivity{
+
+    private Task tache;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +40,7 @@ public class DetailActivity extends AppCompatActivity{
             return insets;
         });
 
-        Task tache = (Task) getIntent().getSerializableExtra("Tache");
+        tache = (Task) getIntent().getSerializableExtra("Tache");
         TextView fieldName = findViewById(R.id.fieldName);
         TextView fieldDesc = findViewById(R.id.fieldDesc);
         TextView fieldPrio = findViewById(R.id.fieldPriority);
@@ -49,7 +52,7 @@ public class DetailActivity extends AppCompatActivity{
         fieldDate.setText(DateFormatter.dateFormatFrench(tache.getDate()));
 
         TasksDBHelper dbHelper = new TasksDBHelper(this);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        //SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         Button boutonDelete = findViewById(R.id.btn_Delete);
         boutonDelete.setOnClickListener(new View.OnClickListener() {
@@ -60,9 +63,12 @@ public class DetailActivity extends AppCompatActivity{
                         .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // OUI
+                                /*
                                 String selection = TasksDB.TableEntry._ID + " LIKE ?";
                                 String[] selectionArgs = { String.valueOf(tache.getId()) };
                                 int deletedRows = db.delete(TasksDB.TableEntry.TABLE_NAME, selection, selectionArgs);
+                                */
+                                int deletedRows = dbHelper.deleteTask(tache);
                                 Toast.makeText(DetailActivity.this,  getString(R.string.task_deleted), Toast.LENGTH_SHORT).show();
                                 finish();
                             }

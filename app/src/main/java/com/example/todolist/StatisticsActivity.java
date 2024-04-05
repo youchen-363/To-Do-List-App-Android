@@ -53,17 +53,17 @@ public class StatisticsActivity extends AppCompatActivity {
 //        tableHeader = findViewById(R.id.tableHeader);
 //        tableHeaderRow = findViewById(R.id.tableHeaderRow);
         Map<String, List<Integer>> stats = this.db.tasksByDate();
-        System.out.println(stats);
+        System.out.println(stats.toString());
         for (Map.Entry<String, List<Integer>> line : stats.entrySet()) {
             String date = DateFormatter.dateFormatFrench(line.getKey());
             List<Integer> counts = line.getValue();
 
             TableRow row = new TableRow(this);
-
+            /*
             this.headerDate = findViewById(R.id.tableHeaderDate);
             this.headerDone = findViewById(R.id.tableHeaderDone);
             this.headerTotal = findViewById(R.id.tableHeaderTotal);
-
+            */
 //            TextView dateTextView = createTextViewFormatted(this, date, this.headerDate.getWidth());
             TextView dateTextView = createTextViewFormatted(this, date, 0);
             row.addView(dateTextView);
@@ -77,7 +77,9 @@ public class StatisticsActivity extends AppCompatActivity {
             row.addView(total);
 
             table.addView(row);
+            System.out.println("Im here " + line.toString());
         }
+        System.out.println("why am i closed ");
     }
 
     public TextView createTextViewFormatted(Context context, String content, int width) {
@@ -87,16 +89,15 @@ public class StatisticsActivity extends AppCompatActivity {
         textView.setGravity(Gravity.CENTER);
 //        textView.setWidth(width);
         // Set background drawable (assuming you have a drawable resource named "table_border")
-        Drawable drawable = context.getResources().getDrawable(R.drawable.table_border);
-        textView.setBackground(drawable);
+        textView.setBackground(context.getDrawable(R.drawable.table_border));
 
         // Set text size in sp (scaled pixels)
         textView.setTextSize(15);  // Size in scaled pixels
 
         // Set padding vertically (5dp)
-        int paddingVertical = (int) context.getResources().getDimension(R.dimen.vertical_padding); // Replace R.dimen.vertical_padding with your dimension resource
-        textView.setPadding(0, paddingVertical, 0, paddingVertical);
+        textView.setPadding(0, 5, 0, 5);
 
+        System.out.println("Create a text view successful");
         // Return the configured TextView
         return textView;
     }

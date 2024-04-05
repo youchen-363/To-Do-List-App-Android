@@ -46,11 +46,15 @@ public class TasksDBHelper extends SQLiteOpenHelper {
         return res != -1;
     }
 
-    public boolean deleteTask(Task task) {
+    public int deleteTask(Task task) {
         SQLiteDatabase db = this.getWritableDatabase();
+        /*
         String st = "DELETE FROM " + TABLE_NAME + " WHERE " + _ID + "=" + task.getId();
         Cursor cursor = db.rawQuery(st, null);
-        return cursor.moveToFirst();
+        */
+        String[] args = {String.valueOf(task.getId())};
+        int res = db.delete(TABLE_NAME, _ID + "= ?", args);
+        return res;
     }
 
     public List<Task> getTasks(){
@@ -102,6 +106,8 @@ public class TasksDBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         Log.d("My order", res.toString());
+        cursor.close();
+        db.close();
         return res;
     }
 }

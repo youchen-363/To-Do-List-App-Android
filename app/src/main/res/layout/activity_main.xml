@@ -26,6 +26,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_custom"
         android:text="@string/add_task"
+        android:textColor="@color/white"
+        android:paddingHorizontal="5dp"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

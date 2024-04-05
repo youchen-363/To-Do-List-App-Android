@@ -8,9 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -18,13 +16,11 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import static com.example.todolist.TasksDB.TableEntry.*;
@@ -52,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
         this.adapter = new CustomListAdapter(this, lignesListe);
         listeTaches.setAdapter(adapter);
 
-        // Affichage des enregistrements de la BD dans la liste
-        afficherListeTaches();
-
         // Bouton ajouter une tâche
         Button boutonAdd = findViewById(R.id.btnAdd);
         boutonAdd.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
                 addTask();
             }
         });
-        setMenuBackgroundColor(R.color.white);
+
+        // Affichage des enregistrements de la BD dans la liste
+        afficherListeTaches();
 
         listeTaches.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -125,47 +120,26 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
     private void afficherListeTaches() {
         lignesListe.clear();
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        String[] projection = {
-                _ID,
-                COLUMN_NAME_NAME,
-                COLUMN_NAME_DESCRIPTION,
-                COLUMN_NAME_PRIORITY,
-                COLUMN_NAME_DATE,
-                COLUMN_NAME_DONE
-        };
-
-        Cursor cursor = db.query(
-                TABLE_NAME,
-                projection,
-                null,
-                null,
-                null,
-                null,
-                null
-        );
-
-        while (cursor.moveToNext()) {
-            int id = cursor.getInt(0);
-            String name = cursor.getString(1);
-            String desc = cursor.getString(2);
-            int priority = cursor.getInt(3);
-            String date = cursor.getString(4);
-            boolean status = cursor.getInt(5) == 1;
-            Task task = new Task(id, name, desc, priority, date);
-            task.setStatut(status);
-            lignesListe.add(new ModeleListe(task, status));
+        List<Task> tasks = this.dbHelper.getTasks();
+        for (Task task : tasks) {
+            lignesListe.add(new ModeleListe(task, task.isStatut()));
             adapter.notifyDataSetChanged();
         }
-        cursor.close();
+        System.out.println(lignesListe);
     }
     
     @Override
     protected void onStart() {
         super.onStart();
+        afficherListeTaches();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         afficherListeTaches();
     }
 };

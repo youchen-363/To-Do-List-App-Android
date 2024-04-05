@@ -4,4 +4,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app">#f85f6a</color>
     <color name="transparent">#80000000</color>
+
+    <color name="pink">#80CD6666</color>
+    <color name="yellow">#80ECBC30</color>
+    <color name="blue">#8037A3F6</color>
+
+
 </resources>
