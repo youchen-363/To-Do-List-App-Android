@@ -1,23 +1,27 @@
 package com.example.todolist;
 
 public class ModeleListe {
-    private String nomTache;
-    private boolean TacheTermine;
+    private Task tache;
+    private boolean tacheTermine;
 
-    public ModeleListe(String nomTache, boolean TacheTermine){
-        this.nomTache = nomTache;
-        this.TacheTermine = TacheTermine;
+    public ModeleListe(Task tache, boolean tacheTermine){
+        this.tache = tache;
+        this.tacheTermine = tacheTermine;
     }
 
     public String getNomTache(){
-        return this.nomTache;
+        return this.tache.getNom();
     }
 
     public boolean getTacheTermine(){
-        return this.TacheTermine;
+        return this.tacheTermine;
+    }
+
+    public Task getTache(){
+        return this.tache;
     }
 
     public void setTacheTermine(boolean etat){
-        this.TacheTermine = etat;
+        this.tacheTermine = etat;
     }
 }

@@ -33,4 +33,7 @@
     <string name="task_cancel">Tâche annulée</string>
     <string name="task_incomplete">Veuillez renseigner une nom de tâche</string>
 
+    <string name="task_deleted">Supprimé avec succès</string>
+    <string name="task_delete_cancel">Suppression annulée</string>
+
 </resources>

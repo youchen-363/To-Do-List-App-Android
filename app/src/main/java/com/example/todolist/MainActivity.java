@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.todolist.TasksBD.TableEntry;
@@ -64,6 +66,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        listeTaches.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                ModeleListe modele = lignesListe.get(position);
+                Task tache = modele.getTache();
+                intent.putExtra("Tache", tache);
+                startActivity(intent);
+            }
+        });
+
     }
     public void setMenuBackgroundColor(int color){
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(color)));
@@ -82,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, data.getStringExtra("valeur"), Toast.LENGTH_SHORT).show();
                 AfficherListeTaches();
             }else{
-                Toast.makeText(MainActivity.this, getString(R.string.task_cancel), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, data.getStringExtra("valeur"), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -110,17 +123,23 @@ public class MainActivity extends AppCompatActivity {
         );
 
         while (cursor.moveToNext()) {
-            long itemId = cursor.getLong(cursor.getColumnIndexOrThrow(TableEntry._ID));
-            String name = cursor.getString(cursor.getColumnIndexOrThrow(TableEntry.COLUMN_NAME_NAME));
-            int done = cursor.getInt(cursor.getColumnIndexOrThrow(TableEntry.COLUMN_NAME_DONE));
-            boolean state = false;
-            if (done == 1){
-                state = true;
-            }
-            lignesListe.add(new ModeleListe(name, state));
+            int id = cursor.getInt(0);
+            String name = cursor.getString(1);
+            String desc = cursor.getString(2);
+            String priority = cursor.getString(3);
+            String date = cursor.getString(4);
+            boolean status = cursor.getInt(5) == 1;
+            Task task = new Task(id, name, desc, priority, date);
+            task.setStatut(status);
+            lignesListe.add(new ModeleListe(task, status));
             adapter.notifyDataSetChanged();
         }
         cursor.close();
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        AfficherListeTaches();
     }
 };
 
