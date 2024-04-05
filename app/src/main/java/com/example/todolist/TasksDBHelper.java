@@ -1,6 +1,8 @@
 package com.example.todolist;
 
 import static com.example.todolist.TasksDB.TableEntry.*;
+import static com.example.todolist.TasksDB.SQL_CREATE_ENTRIES;
+import static com.example.todolist.TasksDB.SQL_DELETE_ENTRIES;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -18,22 +20,7 @@ import java.util.stream.Collectors;
 public class TasksDBHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 4;
     public static final String DATABASE_NAME = "TacheDB.db";
-//    public static final String TABLE_NAME = "Taches";
-//    public static final String COLUMN_ID = "ID";
-//    public static final String COLUMN_NAME = "nom";
-//    public static final String COLUMN_DESCRIPTION = "description";
-//    public static final String COLUMN_PRIORITY = "priorité";
-//    public static final String COLUMN_DATE = "date";
-//    public static final String COLUMN_DONE = "fait";
-    public static final String SQL_CREATE_ENTRIES ="CREATE TABLE " + TABLE_NAME + " (" +
-            _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            COLUMN_NAME_NAME + " TEXT," +
-            COLUMN_NAME_DESCRIPTION + " TEXT," +
-            COLUMN_NAME_PRIORITY + " INTEGER," +
-            COLUMN_NAME_DATE + " TEXT," +
-            COLUMN_NAME_DONE + " INTEGER)";
-    public static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + TABLE_NAME;
+
     public TasksDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

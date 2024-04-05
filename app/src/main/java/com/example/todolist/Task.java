@@ -1,8 +1,9 @@
 package com.example.todolist;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Task {
+public class Task implements Serializable {
     private int id;
     private String nom;
     private String desc;
@@ -70,5 +71,4 @@ public class Task {
     public String toString(){
         return this.nom + '\n' + this.date + " | " + this.priorite.toString();
     }
-
 }

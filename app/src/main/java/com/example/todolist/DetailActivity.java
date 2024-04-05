@@ -4,10 +4,16 @@ import static java.security.AccessController.getContext;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -31,6 +37,19 @@ public class DetailActivity extends AppCompatActivity{
             return insets;
         });
 
+        Task tache = (Task) getIntent().getSerializableExtra("Tache");
+        TextView fieldName = findViewById(R.id.fieldName);
+        TextView fieldDesc = findViewById(R.id.fieldDesc);
+        TextView fieldPrio = findViewById(R.id.fieldPriority);
+        TextView fieldDate = findViewById(R.id.fieldDate);
+
+        fieldName.setText(tache.getNom());
+        fieldDesc.setText(tache.getDesc());
+        fieldPrio.setText(tache.getPriorite());
+        fieldDate.setText(tache.getDate());
+
+        TasksDBHelper dbHelper = new TasksDBHelper(this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         Button boutonDelete = findViewById(R.id.btn_Delete);
         boutonDelete.setOnClickListener(new View.OnClickListener() {
@@ -40,15 +59,29 @@ public class DetailActivity extends AppCompatActivity{
                 builder.setMessage(R.string.confirm_message)
                         .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                // CONFIRM
+                                // OUI
+                                String selection = TasksBD.TableEntry._ID + " LIKE ?";
+                                String[] selectionArgs = { String.valueOf(tache.getId()) };
+                                int deletedRows = db.delete(TasksBD.TableEntry.TABLE_NAME, selection, selectionArgs);
+                                Toast.makeText(DetailActivity.this,  getString(R.string.task_deleted), Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         })
                         .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                // CANCEL
+                                // NON
+                                Toast.makeText(DetailActivity.this, getString(R.string.task_delete_cancel), Toast.LENGTH_SHORT).show();
                             }
                         });
                 builder.create().show();
+            }
+        });
+
+        ImageView boutonBack = findViewById(R.id.btnBack);
+        boutonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

@@ -78,53 +78,49 @@
         android:id="@+id/fieldName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginEnd="318dp"
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/asap"
         android:text="@string/fieldName"
         app:layout_constraintBottom_toTopOf="@+id/labelDescTask"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/labelNameTask"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/labelNameTask"
         app:layout_constraintTop_toBottomOf="@+id/labelNameTask" />
 
     <TextView
         android:id="@+id/fieldDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginEnd="284dp"
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/asap"
         android:text="@string/fieldDesc"
         app:layout_constraintBottom_toTopOf="@+id/textPriorityTask"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/labelDescTask"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/labelDescTask" />
 
     <TextView
         android:id="@+id/fieldPriority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginEnd="310dp"
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/asap"
         android:text="@string/fieldPriority"
         app:layout_constraintBottom_toTopOf="@+id/labelDate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/textPriorityTask"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textPriorityTask" />
 
     <TextView
         android:id="@+id/fieldDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginEnd="326dp"
         android:fontFamily="@font/asap"
         android:text="@string/date"
-        app:layout_constraintBottom_toTopOf="@+id/btn_modify"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/labelDate"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/labelDate"
+        tools:layout_editor_absoluteY="363dp" />
 
     <TextView
         android:id="@+id/titleDetail"
@@ -144,26 +140,10 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/btn_modify"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="56dp"
-        android:background="@drawable/button_custom_white"
-        android:text="@string/modify_task"
-        android:textColor="#f85f6a"
-        app:backgroundTint="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldDate" />
-
-    <Button
         android:id="@+id/btn_Delete"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="187dp"
         android:background="@drawable/button_custom"
@@ -172,7 +152,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_modify" />
+        app:layout_constraintTop_toBottomOf="@+id/fieldDate" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

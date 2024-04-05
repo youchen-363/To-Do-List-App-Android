@@ -109,6 +109,9 @@ public class AddActivity extends AppCompatActivity{
         boutonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent retour = new Intent();
+                retour.putExtra("valeur",getString(R.string.task_cancel));
+                setResult(RESULT_CANCELED, retour);
                 finish();
             }
         });
