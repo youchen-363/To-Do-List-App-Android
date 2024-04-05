@@ -67,8 +67,8 @@ public class TasksDBHelper extends SQLiteOpenHelper {
                 int id = cursor.getInt(0);
                 String name = cursor.getString(1);
                 String desc = cursor.getString(2);
-                String priority = cursor.getString(3);
-                String date = cursor.getString(4);
+                int priority = cursor.getInt(3);
+                String date = DateFormatter.dateFormatFrench(cursor.getString(4));
                 boolean status = cursor.getInt(5) == 1 ? true : false;
                 Task task = new Task(id, name, desc, priority, date);
                 task.setStatut(status);

@@ -2,8 +2,6 @@ package com.example.todolist;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,7 +21,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.List;
-import static com.example.todolist.TasksDB.TableEntry.*;
 
 public class MainActivity extends AppCompatActivity {
     private TasksDBHelper dbHelper;
@@ -42,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.dbHelper = new TasksDBHelper(this);
 
-        ListView listeTaches = findViewById(R.id.listView);
+        ListView listeTaches = findViewById(R.id.tasksList);
         this.lignesListe = new ArrayList<>();
 
         this.adapter = new CustomListAdapter(this, lignesListe);

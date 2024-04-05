@@ -5,22 +5,34 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="366dp" />
-
-    <TextView
-        android:id="@+id/titre"
-        android:layout_width="82dp"
-        android:layout_height="27dp"
-        android:text="@string/todo_list"
-        app:layout_constraintBottom_toTopOf="@+id/listView"
-        app:layout_constraintStart_toStartOf="@+id/listView"
+        android:id="@+id/tasksList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_custom"
+        android:paddingHorizontal="5dp"
+        android:text="@string/add_task"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toBottomOf="@+id/tasksList"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

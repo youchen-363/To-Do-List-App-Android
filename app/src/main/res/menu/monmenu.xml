@@ -9,11 +9,11 @@
         android:iconTint="@color/app"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/quit_menu"
-        android:title="@string/quit_app"
-        app:showAsAction="never"/>
-    <item
         android:id="@+id/view_stats"
         android:title="@string/stats"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/quit_menu"
+        android:title="@string/quit_app"
         app:showAsAction="never"/>
 </menu>
