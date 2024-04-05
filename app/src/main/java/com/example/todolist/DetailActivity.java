@@ -60,9 +60,9 @@ public class DetailActivity extends AppCompatActivity{
                         .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // OUI
-                                String selection = TasksBD.TableEntry._ID + " LIKE ?";
+                                String selection = TasksDB.TableEntry._ID + " LIKE ?";
                                 String[] selectionArgs = { String.valueOf(tache.getId()) };
-                                int deletedRows = db.delete(TasksBD.TableEntry.TABLE_NAME, selection, selectionArgs);
+                                int deletedRows = db.delete(TasksDB.TableEntry.TABLE_NAME, selection, selectionArgs);
                                 Toast.makeText(DetailActivity.this,  getString(R.string.task_deleted), Toast.LENGTH_SHORT).show();
                                 finish();
                             }

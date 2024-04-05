@@ -13,9 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="49dp"
+        android:layout_marginLeft="20dp"
         android:contentDescription="@string/todo_list"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,20 +23,23 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
-        android:textSize="25sp"
+        android:layout_marginEnd="20dp"
         android:text="@string/stats"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@id/tableHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="wrap_content"
+        android:id="@+id/tableHeader"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:stretchColumns="0,1,2"
         app:layout_constraintBottom_toTopOf="@+id/scrollTable"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,15 +47,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TableRow
-            android:id="@+id/tableRow1"
+            android:id="@+id/tableHeaderRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/table_header_border"
             tools:ignore="UselessParent">
 
             <TextView
-                android:id="@+id/tHead1"
-                android:layout_width="99dp"
+                android:id="@+id/tableHeaderDate"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/table_header_border"
                 android:padding="5dp"
@@ -61,25 +64,25 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/tHead2"
-                android:layout_width="wrap_content"
+                android:id="@+id/tableHeaderDone"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/table_header_border"
                 android:padding="5dp"
                 android:text="@string/task_done"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:background="@drawable/table_header_border"
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/tHead3"
-                android:layout_width="match_parent"
+                android:id="@+id/tableHeaderTotal"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/table_header_border"
                 android:padding="5dp"
                 android:text="@string/task_todo"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:background="@drawable/table_header_border"
                 android:textSize="15sp" />
 
         </TableRow>
@@ -92,7 +95,7 @@
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
+        app:layout_constraintTop_toBottomOf="@+id/tableHeader">
 
         <TableLayout
             android:id="@+id/tableStats"

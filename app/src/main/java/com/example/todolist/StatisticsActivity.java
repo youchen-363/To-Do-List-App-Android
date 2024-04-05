@@ -23,6 +23,12 @@ import java.util.Map;
 public class StatisticsActivity extends AppCompatActivity {
 
     private TasksDBHelper db;
+    private TableLayout table;
+    private TableLayout tableHeader;
+    private TableRow tableHeaderRow;
+    private TextView headerDate;
+    private TextView headerDone;
+    private TextView headerTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +49,9 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         });
 
-        TableLayout table = findViewById(R.id.tableStats);
+        table = findViewById(R.id.tableStats);
+//        tableHeader = findViewById(R.id.tableHeader);
+//        tableHeaderRow = findViewById(R.id.tableHeaderRow);
         Map<String, List<Integer>> stats = this.db.tasksByDate();
         System.out.println(stats);
         for (Map.Entry<String, List<Integer>> line : stats.entrySet()) {
@@ -52,25 +60,32 @@ public class StatisticsActivity extends AppCompatActivity {
 
             TableRow row = new TableRow(this);
 
-            TextView dateTextView = createTextViewFormatted(this, date);
+            this.headerDate = findViewById(R.id.tableHeaderDate);
+            this.headerDone = findViewById(R.id.tableHeaderDone);
+            this.headerTotal = findViewById(R.id.tableHeaderTotal);
+
+//            TextView dateTextView = createTextViewFormatted(this, date, this.headerDate.getWidth());
+            TextView dateTextView = createTextViewFormatted(this, date, 0);
             row.addView(dateTextView);
 
-            TextView done = createTextViewFormatted(this, String.valueOf(counts.get(0)));
+//            TextView done = createTextViewFormatted(this, String.valueOf(counts.get(0)), this.headerDone.getWidth());
+            TextView done = createTextViewFormatted(this, String.valueOf(counts.get(0)), 0);
             row.addView(done);
 
-            TextView total = createTextViewFormatted(this, String.valueOf(counts.get(1)));
+//            TextView total = createTextViewFormatted(this, String.valueOf(counts.get(1)), this.headerTotal.getWidth());
+            TextView total = createTextViewFormatted(this, String.valueOf(counts.get(1)), 0);
             row.addView(total);
 
             table.addView(row);
         }
     }
 
-    public TextView createTextViewFormatted(Context context, String content) {
+    public TextView createTextViewFormatted(Context context, String content, int width) {
         TextView textView = new TextView(context);
         textView.setText(content);
         // Set text alignment to center
         textView.setGravity(Gravity.CENTER);
-
+//        textView.setWidth(width);
         // Set background drawable (assuming you have a drawable resource named "table_border")
         Drawable drawable = context.getResources().getDrawable(R.drawable.table_border);
         textView.setBackground(drawable);
