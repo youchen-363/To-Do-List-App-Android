@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddActivity">
-
+    android:background="@color/white"
+    tools:context=".DetailActivity">
 
     <ImageView
         android:id="@+id/btnBack"

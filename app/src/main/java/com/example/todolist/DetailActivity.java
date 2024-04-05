@@ -46,7 +46,7 @@ public class DetailActivity extends AppCompatActivity{
         fieldName.setText(tache.getNom());
         fieldDesc.setText(tache.getDesc());
         fieldPrio.setText(tache.prioriteString(this));
-        fieldDate.setText(tache.getDate());
+        fieldDate.setText(DateFormatter.dateFormatFrench(tache.getDate()));
 
         TasksDBHelper dbHelper = new TasksDBHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();

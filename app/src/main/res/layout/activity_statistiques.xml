@@ -15,14 +15,14 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:contentDescription="@string/todo_list"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/titleStats"
+        app:layout_constraintEnd_toStartOf="@+id/titleStats"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titleStats"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -44,7 +44,7 @@
         app:layout_constraintBottom_toTopOf="@+id/scrollTable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/titleStats">
 
         <TableRow
             android:id="@+id/tableHeaderRow"
@@ -106,7 +106,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/scrollTable"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toBottomOf="@+id/titleStats">
 
         </TableLayout>
     </ScrollView>
