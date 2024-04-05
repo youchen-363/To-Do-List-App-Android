@@ -26,26 +26,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="215dp"
         android:fontFamily="@font/asap_medium"
         android:text="@string/desc_task"
         android:textColor="#f85f6a"
-        app:layout_constraintBottom_toTopOf="@+id/fieldDesc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldName" />
 
     <TextView
         android:id="@+id/textPriorityTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="241dp"
         android:fontFamily="@font/asap_medium"
         android:text="@string/priority_task"
         android:textColor="#F85F6A"
-        app:layout_constraintBottom_toTopOf="@+id/fieldPriority"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldDesc" />
 
     <ImageView
         android:id="@+id/btnBack"
@@ -66,61 +68,58 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="257dp"
         android:fontFamily="@font/asap_medium"
         android:text="@string/date_task"
         android:textColor="#F85F6A"
-        app:layout_constraintBottom_toTopOf="@+id/fieldDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldPriority" />
 
     <TextView
         android:id="@+id/fieldName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="45dp"
         android:fontFamily="@font/asap"
         android:text="@string/fieldName"
-        app:layout_constraintBottom_toTopOf="@+id/labelDescTask"
-        app:layout_constraintEnd_toEndOf="@+id/labelNameTask"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/labelNameTask"
         app:layout_constraintTop_toBottomOf="@+id/labelNameTask" />
 
     <TextView
         android:id="@+id/fieldDesc"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="45dp"
         android:fontFamily="@font/asap"
         android:text="@string/fieldDesc"
-        app:layout_constraintBottom_toTopOf="@+id/textPriorityTask"
-        app:layout_constraintEnd_toEndOf="@+id/labelDescTask"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/labelDescTask" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/labelDescTask"
+        app:layout_constraintTop_toBottomOf="@+id/labelDescTask" />
 
     <TextView
         android:id="@+id/fieldPriority"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="45dp"
         android:fontFamily="@font/asap"
         android:text="@string/fieldPriority"
-        app:layout_constraintBottom_toTopOf="@+id/labelDate"
-        app:layout_constraintEnd_toEndOf="@+id/textPriorityTask"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textPriorityTask" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textPriorityTask"
+        app:layout_constraintTop_toBottomOf="@+id/textPriorityTask" />
 
     <TextView
         android:id="@+id/fieldDate"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="45dp"
         android:fontFamily="@font/asap"
         android:text="@string/date"
-        app:layout_constraintEnd_toEndOf="@+id/labelDate"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/labelDate"
-        tools:layout_editor_absoluteY="363dp" />
+        app:layout_constraintTop_toBottomOf="@+id/labelDate" />
 
     <TextView
         android:id="@+id/titleDetail"
@@ -129,7 +128,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="299dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/quicksand_bold"
         android:text="@string/title_detail"
         android:textSize="25sp"
@@ -141,11 +140,10 @@
 
     <Button
         android:id="@+id/btn_Delete"
-        android:layout_width="300dp"
+        android:layout_width="305dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="187dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="331dp"
         android:background="@drawable/button_custom"
         android:text="@string/delete_task"
         app:backgroundTint="@null"
