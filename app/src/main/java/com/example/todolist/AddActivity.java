@@ -44,7 +44,6 @@ public class AddActivity extends AppCompatActivity{
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 int monthSelected = month+1;
-                // on met les dates en format dd/MM/yyyy
                 dateSelected = DateFormatter.toDate(year, monthSelected, dayOfMonth);
                 Log.d("My date", dateSelected);
             }
@@ -72,28 +71,9 @@ public class AddActivity extends AppCompatActivity{
                         break;
                 }
 
-//                CalendarView calendrier = findViewById(R.id.calendar);
-//                long selectedDateMillis = calendrier.getDate();
-//
-//                Calendar selectedCalendar = Calendar.getInstance();
-//                selectedCalendar.setTimeInMillis(selectedDateMillis);
-//
-//                int year = selectedCalendar.get(Calendar.YEAR);
-//                int month = selectedCalendar.get(Calendar.MONTH) + 1;
-//                int day = selectedCalendar.get(Calendar.DAY_OF_MONTH);
-
                 if (!nameTask.isEmpty()){
-                    // Ajouter une ligne à la base de donnée
-                    SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-                    ContentValues values = new ContentValues();
-                    values.put(COLUMN_NAME_NAME, nameTask);
-                    values.put(COLUMN_NAME_DESCRIPTION, descTask);
-                    values.put(COLUMN_NAME_PRIORITY, prio);
-                    values.put(COLUMN_NAME_DATE, dateSelected);
-                    values.put(COLUMN_NAME_DONE, 0);
-
-                    long newRowId = db.insert(TABLE_NAME, null, values);
+                    Task task = new Task(-1, nameTask, descTask, prio, dateSelected);
+                    dbHelper.addTask(task);
 
                     Intent retour = new Intent();
                     retour.putExtra("valeur",getString(R.string.task_added));

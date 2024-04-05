@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,11 +22,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private TasksDBHelper dbHelper;
     private CustomListAdapter adapter;
-    private List<ModeleListe> lignesListe;
+    private List<ListModel> listRows;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,13 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
         this.dbHelper = new TasksDBHelper(this);
 
-        ListView listeTaches = findViewById(R.id.tasksList);
-        this.lignesListe = new ArrayList<>();
+        ListView tasksList = findViewById(R.id.tasksList);
+        this.listRows = new ArrayList<>();
 
-        this.adapter = new CustomListAdapter(this, lignesListe);
-        listeTaches.setAdapter(adapter);
+        this.adapter = new CustomListAdapter(this, listRows);
+        tasksList.setAdapter(adapter);
 
-        // Bouton ajouter une tâche
         Button boutonAdd = findViewById(R.id.btnAdd);
         boutonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,15 +55,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Affichage des enregistrements de la BD dans la liste
-        afficherListeTaches();
+        displayTasksList();
 
-        listeTaches.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        tasksList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                ModeleListe modele = lignesListe.get(position);
-                Task tache = modele.getTache();
-                intent.putExtra("Tache", tache);
+                ListModel model = listRows.get(position);
+                Task task = model.getTache();
+                intent.putExtra("Tache", task);
                 startActivity(intent);
             }
         });
@@ -73,12 +73,8 @@ public class MainActivity extends AppCompatActivity {
         try {
             startActivityForResult(intent, 100);
         }catch(ActivityNotFoundException e){
-            e.printStackTrace();
+            Log.e("ActivityNotFoundException", Objects.requireNonNull(e.getMessage()));
         }
-    }
-    
-    public void setMenuBackgroundColor(int color){
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(color)));
     }
 
     @Override
@@ -91,18 +87,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id = item.getItemId();
         Intent intent;
-        switch(id) {
-            case R.id.info_menu :
-                addTask();
-                return true;
-            case R.id.quit_menu :
-                System.exit(0);
-                return true;
-            case R.id.view_stats:
-                intent = new Intent(MainActivity.this, StatisticsActivity.class);
-                startActivity(intent);
+        if (id == R.id.info_menu) {
+            addTask();
+            return true;
+        } else if (id == R.id.quit_menu) {
+            System.exit(0);
+            return true;
+        } else if (id == R.id.view_stats) {
+            intent = new Intent(MainActivity.this, StatisticsActivity.class);
+            startActivity(intent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -111,33 +108,32 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 100) {
             if (resultCode == RESULT_OK) {
                 Toast.makeText(MainActivity.this, data.getStringExtra("valeur"), Toast.LENGTH_SHORT).show();
-                afficherListeTaches();
+                displayTasksList();
             }else{
                 Toast.makeText(MainActivity.this, data.getStringExtra("valeur"), Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private void afficherListeTaches() {
-        lignesListe.clear();
+    private void displayTasksList() {
+        listRows.clear();
         List<Task> tasks = this.dbHelper.getTasks();
         for (Task task : tasks) {
-            lignesListe.add(new ModeleListe(task, task.isStatut()));
-            adapter.notifyDataSetChanged();
+            listRows.add(new ListModel(task, task.isStatut()));
         }
-        System.out.println(lignesListe);
+        adapter.notifyDataSetChanged();
     }
     
     @Override
     protected void onStart() {
         super.onStart();
-        afficherListeTaches();
+        displayTasksList();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        afficherListeTaches();
+        displayTasksList();
     }
 };
 

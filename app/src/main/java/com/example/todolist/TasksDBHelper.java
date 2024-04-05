@@ -48,10 +48,6 @@ public class TasksDBHelper extends SQLiteOpenHelper {
 
     public int deleteTask(Task task) {
         SQLiteDatabase db = this.getWritableDatabase();
-        /*
-        String st = "DELETE FROM " + TABLE_NAME + " WHERE " + _ID + "=" + task.getId();
-        Cursor cursor = db.rawQuery(st, null);
-        */
         String[] args = {String.valueOf(task.getId())};
         int res = db.delete(TABLE_NAME, _ID + "= ?", args);
         return res;
@@ -69,7 +65,7 @@ public class TasksDBHelper extends SQLiteOpenHelper {
                 String desc = cursor.getString(2);
                 int priority = cursor.getInt(3);
                 String date = DateFormatter.dateFormatFrench(cursor.getString(4));
-                boolean status = cursor.getInt(5) == 1 ? true : false;
+                boolean status = cursor.getInt(5) == 1;
                 Task task = new Task(id, name, desc, priority, date);
                 task.setStatut(status);
                 tasks.add(task);
@@ -90,9 +86,6 @@ public class TasksDBHelper extends SQLiteOpenHelper {
                 + "FROM " + TABLE_NAME +" "
                 + "GROUP BY " + COLUMN_NAME_DATE + " "
                 + "ORDER BY " + COLUMN_NAME_DATE;
-//                + "SUBSTR(" + COLUMN_NAME_DATE + ", 7, 4) || '-' || "
-//                + "SUBSTR(" + COLUMN_NAME_DATE + ", 4, 2) || '-' || "
-//                + "SUBSTR(" + COLUMN_NAME_DATE + ", 1, 2)";
         Map<String, List<Integer>> res = new HashMap<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(st, null);

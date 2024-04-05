@@ -13,11 +13,11 @@ import static com.example.todolist.TasksDB.TableEntry.*;
 
 import java.util.List;
 
-public class CustomListAdapter extends ArrayAdapter<ModeleListe> {
+public class CustomListAdapter extends ArrayAdapter<ListModel> {
     private Context context;
-    private List<ModeleListe> lignes;
+    private List<ListModel> lignes;
 
-    public CustomListAdapter(Context context, List<ModeleListe> lignes){
+    public CustomListAdapter(Context context, List<ListModel> lignes){
         super(context, R.layout.list_custom, lignes);
         this.context = context;
         this.lignes = lignes;
@@ -31,7 +31,7 @@ public class CustomListAdapter extends ArrayAdapter<ModeleListe> {
             view = inflater.inflate(R.layout.list_custom, null);
         }
 
-        ModeleListe ligne = lignes.get(position);
+        ListModel ligne = lignes.get(position);
         if (ligne != null){
             TextView taskName = view.findViewById(R.id.detailTask);
             Switch taskStatus = view.findViewById(R.id.taskStatus);
@@ -39,7 +39,6 @@ public class CustomListAdapter extends ArrayAdapter<ModeleListe> {
             taskName.setText(ligne.getNomTache());
             taskStatus.setChecked(ligne.getTacheTermine());
 
-            // Quand le statut de la tâche change
             taskStatus.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 ligne.setTacheTermine(isChecked);
 

@@ -1,16 +1,16 @@
 package com.example.todolist;
 
-public class ModeleListe {
+public class ListModel {
     private Task tache;
     private boolean tacheTermine;
 
-    public ModeleListe(Task tache, boolean tacheTermine){
+    public ListModel(Task tache, boolean tacheTermine){
         this.tache = tache;
         this.tacheTermine = tacheTermine;
     }
 
     public String getNomTache(){
-        return this.tache.getNom();
+        return this.tache.toString();
     }
 
     public boolean getTacheTermine(){

@@ -73,13 +73,12 @@
         android:id="@+id/labelDescTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="105dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/asap_medium"
         android:text="@string/desc_task"
         android:textColor="#f85f6a"
         app:layout_constraintEnd_toStartOf="@+id/labelDate"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/titleDetail"
         app:layout_constraintTop_toBottomOf="@+id/fieldName" />
 
     <TextView
@@ -116,14 +115,13 @@
         android:id="@+id/labelNameTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="105dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/asap_medium"
         android:text="@string/name_task"
         android:textColor="#f85f6a"
         app:layout_constraintBottom_toTopOf="@+id/fieldName"
         app:layout_constraintEnd_toStartOf="@+id/textPriorityTask"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/titleDetail"
         app:layout_constraintTop_toBottomOf="@+id/titleDetail" />
 
     <TextView

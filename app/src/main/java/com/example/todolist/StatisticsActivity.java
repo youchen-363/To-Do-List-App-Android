@@ -24,11 +24,6 @@ public class StatisticsActivity extends AppCompatActivity {
 
     private TasksDBHelper db;
     private TableLayout table;
-    private TableLayout tableHeader;
-    private TableRow tableHeaderRow;
-    private TextView headerDate;
-    private TextView headerDone;
-    private TextView headerTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +45,6 @@ public class StatisticsActivity extends AppCompatActivity {
         });
 
         table = findViewById(R.id.tableStats);
-//        tableHeader = findViewById(R.id.tableHeader);
-//        tableHeaderRow = findViewById(R.id.tableHeaderRow);
         Map<String, List<Integer>> stats = this.db.tasksByDate();
         System.out.println(stats.toString());
         for (Map.Entry<String, List<Integer>> line : stats.entrySet()) {
@@ -59,21 +52,13 @@ public class StatisticsActivity extends AppCompatActivity {
             List<Integer> counts = line.getValue();
 
             TableRow row = new TableRow(this);
-            /*
-            this.headerDate = findViewById(R.id.tableHeaderDate);
-            this.headerDone = findViewById(R.id.tableHeaderDone);
-            this.headerTotal = findViewById(R.id.tableHeaderTotal);
-            */
-//            TextView dateTextView = createTextViewFormatted(this, date, this.headerDate.getWidth());
-            TextView dateTextView = createTextViewFormatted(this, date, 0);
+            TextView dateTextView = createTextViewFormatted(this, date);
             row.addView(dateTextView);
 
-//            TextView done = createTextViewFormatted(this, String.valueOf(counts.get(0)), this.headerDone.getWidth());
-            TextView done = createTextViewFormatted(this, String.valueOf(counts.get(0)), 0);
+            TextView done = createTextViewFormatted(this, String.valueOf(counts.get(0)));
             row.addView(done);
 
-//            TextView total = createTextViewFormatted(this, String.valueOf(counts.get(1)), this.headerTotal.getWidth());
-            TextView total = createTextViewFormatted(this, String.valueOf(counts.get(1)), 0);
+            TextView total = createTextViewFormatted(this, String.valueOf(counts.get(1)));
             row.addView(total);
 
             table.addView(row);
@@ -82,23 +67,13 @@ public class StatisticsActivity extends AppCompatActivity {
         System.out.println("why am i closed ");
     }
 
-    public TextView createTextViewFormatted(Context context, String content, int width) {
+    public TextView createTextViewFormatted(Context context, String content) {
         TextView textView = new TextView(context);
         textView.setText(content);
-        // Set text alignment to center
         textView.setGravity(Gravity.CENTER);
-//        textView.setWidth(width);
-        // Set background drawable (assuming you have a drawable resource named "table_border")
         textView.setBackground(context.getDrawable(R.drawable.table_border));
-
-        // Set text size in sp (scaled pixels)
-        textView.setTextSize(15);  // Size in scaled pixels
-
-        // Set padding vertically (5dp)
+        textView.setTextSize(15);
         textView.setPadding(0, 5, 0, 5);
-
-        System.out.println("Create a text view successful");
-        // Return the configured TextView
         return textView;
     }
 

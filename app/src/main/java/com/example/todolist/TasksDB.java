@@ -3,11 +3,7 @@ package com.example.todolist;
 import android.provider.BaseColumns;
 
 public final class TasksDB {
-    // To prevent someone from accidentally instantiating the contract class,
-    // make the constructor private.
     private TasksDB() {}
-
-    /* Inner class that defines the table contents */
     public static class TableEntry implements BaseColumns {
         public static final String TABLE_NAME = "Taches";
         public static final String COLUMN_NAME_NAME = "nom";

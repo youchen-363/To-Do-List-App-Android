@@ -33,4 +33,7 @@
     <string name="task_deleted">Successfully deleted</string>
     <string name="task_delete_cancel">Deletion canceled</string>
 
+    <string name="groceriesHintName">Groceries</string>
+    <string name="groceriesHintDesc">Buy tomatoes, peppers and milk</string>
+
 </resources>

@@ -1,9 +1,7 @@
 package com.example.todolist;
 
 import android.content.Context;
-
 import java.io.Serializable;
-import java.sql.Date;
 
 public class Task implements Serializable {
     private int id;
@@ -88,6 +86,6 @@ public class Task implements Serializable {
     }
     @Override
     public String toString(){
-        return this.nom + '\n' + this.date + " | " + this.priorite;
+        return this.nom + '\n' + this.date;
     }
 }

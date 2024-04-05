@@ -8,126 +8,106 @@
     tools:context=".AddActivity"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/titleAjout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="@string/add_task"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/labelNameTask"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/textNomTask"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:fontFamily="@font/asap"
-        android:inputType="text"
-        android:hint="@string/placeholder_shopping"
-        app:layout_constraintBottom_toTopOf="@+id/labelDescTask"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelNameTask" />
-
     <EditText
         android:id="@+id/textDescTask"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="20dp"
         android:ems="10"
         android:fontFamily="@font/asap"
-        android:inputType="text"
         android:hint="@string/placeholder_desc"
+        android:autofillHints="@string/groceriesHintDesc"
+        android:inputType="text"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toTopOf="@+id/textPriorityTask"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/calendar"
+        app:layout_constraintStart_toStartOf="@+id/labelDescTask"
         app:layout_constraintTop_toBottomOf="@+id/labelDescTask" />
 
     <TextView
-        android:id="@+id/labelNameTask"
-        android:layout_width="wrap_content"
+        android:id="@+id/titleAjout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="300dp"
-        android:fontFamily="@font/asap_medium"
-        android:text="@string/name_task"
-        android:textColor="#f85f6a"
-        app:layout_constraintBottom_toTopOf="@+id/textNomTask"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="@string/add_task"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@+id/btnBack"
+        app:layout_constraintBottom_toTopOf="@+id/calendar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleAjout" />
-
-    <TextView
-        android:id="@+id/labelDescTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="298dp"
-        android:fontFamily="@font/asap_medium"
-        android:text="@string/desc_task"
-        android:textColor="#f85f6a"
-        app:layout_constraintBottom_toTopOf="@+id/textDescTask"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textNomTask" />
-
-    <TextView
-        android:id="@+id/textPriorityTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="240dp"
-        android:fontFamily="@font/asap_medium"
-        android:text="@string/priority_task"
-        android:textColor="#F85F6A"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroupPrio"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textDescTask" />
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="351dp"
-        android:layout_marginBottom="10dp"
         android:contentDescription="@string/todo_list"
         app:layout_constraintBottom_toTopOf="@+id/titleAjout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/titleAjout"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/labelDescTask"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/asap_medium"
+        android:text="@string/desc_task"
+        android:textColor="#f85f6a"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/calendar"
+        app:layout_constraintStart_toStartOf="@+id/labelNameTask"
+        app:layout_constraintTop_toBottomOf="@+id/textNomTask" />
+
+    <TextView
+        android:id="@+id/labelNameTask"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/asap_medium"
+        android:text="@string/name_task"
+        android:textColor="#f85f6a"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/calendar"
+        app:layout_constraintBottom_toTopOf="@+id/textNomTask"
+        app:layout_constraintStart_toStartOf="@+id/titleAjout"
+        app:layout_constraintTop_toTopOf="@+id/calendar"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <EditText
+        android:id="@+id/textNomTask"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="@font/asap"
+        android:hint="@string/placeholder_shopping"
+        android:inputType="text"
+        android:autofillHints="@string/groceriesHintName"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/calendar"
+        app:layout_constraintStart_toStartOf="@+id/labelNameTask"
+        app:layout_constraintTop_toBottomOf="@+id/labelNameTask" />
+
+    <TextView
+        android:id="@+id/textPriorityTask"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/asap_medium"
+        android:text="@string/priority_task"
+        android:textColor="#F85F6A"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/calendar"
+        app:layout_constraintStart_toStartOf="@+id/labelDescTask"
+        app:layout_constraintTop_toBottomOf="@+id/textDescTask" />
 
     <RadioGroup
         android:id="@+id/radioGroupPrio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="149dp"
-        android:layout_marginBottom="418dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textPriorityTask"
         app:layout_constraintTop_toBottomOf="@+id/textPriorityTask">
 
         <RadioButton
@@ -135,6 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/asap"
+            android:layout_marginEnd="20dp"
             android:text="@string/high" />
 
         <RadioButton
@@ -142,6 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/asap"
             android:text="@string/normal" />
 
@@ -150,25 +132,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/asap"
+            android:layout_marginEnd="20dp"
             android:text="@string/low" />
     </RadioGroup>
 
     <CalendarView
         android:id="@+id/calendar"
-        android:layout_width="430dp"
-        android:layout_height="283dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="35dp"
+        android:layout_width="302dp"
+        android:layout_height="226dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_addTask"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupPrio" />
+        app:layout_constraintTop_toBottomOf="@+id/titleAjout" />
 
     <Button
         android:id="@+id/btn_addTask"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_custom"
         android:text="@string/add_task"
         app:layout_constraintBottom_toBottomOf="parent"
