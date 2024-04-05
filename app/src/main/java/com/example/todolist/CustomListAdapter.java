@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.database.sqlite.SQLiteDatabase;
-import com.example.todolist.TasksBD.TableEntry;
+import static com.example.todolist.TasksDB.TableEntry.*;
 
 import java.util.List;
 
@@ -47,15 +47,15 @@ public class CustomListAdapter extends ArrayAdapter<ModeleListe> {
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 ContentValues values = new ContentValues();
                 if (isChecked){
-                    values.put(TableEntry.COLUMN_NAME_DONE, 1);
+                    values.put(COLUMN_NAME_DONE, 1);
                 }else{
-                    values.put(TableEntry.COLUMN_NAME_DONE, 0);
+                    values.put(COLUMN_NAME_DONE, 0);
                 }
-                String selection = TableEntry.COLUMN_NAME_NAME + " LIKE ?";
+                String selection = COLUMN_NAME_NAME + " LIKE ?";
                 String[] selectionArgs = {ligne.getNomTache()};
 
                 int count = db.update(
-                        TableEntry.TABLE_NAME,
+                        TABLE_NAME,
                         values,
                         selection,
                         selectionArgs);
@@ -63,4 +63,5 @@ public class CustomListAdapter extends ArrayAdapter<ModeleListe> {
         }
         return view;
     }
+
 }

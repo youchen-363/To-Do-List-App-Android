@@ -2,10 +2,10 @@ package com.example.todolist;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,19 +15,18 @@ import android.widget.RadioGroup;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
-
+import static com.example.todolist.TasksDB.TableEntry.*;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import com.example.todolist.TasksBD.TableEntry;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AddActivity extends AppCompatActivity{
     private TasksDBHelper dbHelper;
+    private CalendarView calender;
+    private String dateSelected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +38,17 @@ public class AddActivity extends AppCompatActivity{
             return insets;
         });
         this.dbHelper = new TasksDBHelper(this);
+        this.calender = findViewById(R.id.calendar);
+        dateSelected = DateFormatter.todayDate();
+        this.calender.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                int monthSelected = month+1;
+                // on met les dates en format dd/MM/yyyy
+                dateSelected = DateFormatter.toDate(year, monthSelected, dayOfMonth);
+                Log.d("My date", dateSelected);
+            }
+        });
 
         Button boutonAdd = findViewById(R.id.btn_addTask);
         boutonAdd.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +56,6 @@ public class AddActivity extends AppCompatActivity{
             public void onClick(View v) {
 
                 String nameTask = ((EditText) findViewById(R.id.textNomTask)).getText().toString();
-
                 String descTask = ((EditText) findViewById(R.id.textDescTask)).getText().toString();
 
                 RadioGroup radioGroup = findViewById(R.id.radioGroupPrio);
@@ -63,29 +72,28 @@ public class AddActivity extends AppCompatActivity{
                         break;
                 }
 
-                CalendarView calendrier = findViewById(R.id.calendar);
-                long selectedDateMillis = calendrier.getDate();
+//                CalendarView calendrier = findViewById(R.id.calendar);
+//                long selectedDateMillis = calendrier.getDate();
+//
+//                Calendar selectedCalendar = Calendar.getInstance();
+//                selectedCalendar.setTimeInMillis(selectedDateMillis);
+//
+//                int year = selectedCalendar.get(Calendar.YEAR);
+//                int month = selectedCalendar.get(Calendar.MONTH) + 1;
+//                int day = selectedCalendar.get(Calendar.DAY_OF_MONTH);
 
-                Calendar selectedCalendar = Calendar.getInstance();
-                selectedCalendar.setTimeInMillis(selectedDateMillis);
-
-                int year = selectedCalendar.get(Calendar.YEAR);
-                int month = selectedCalendar.get(Calendar.MONTH) + 1;
-                int day = selectedCalendar.get(Calendar.DAY_OF_MONTH);
-
-                String dateTask = year + "-" + month + "-" + day;
                 if (!nameTask.isEmpty()){
                     // Ajouter une ligne à la base de donnée
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
 
                     ContentValues values = new ContentValues();
-                    values.put(TableEntry.COLUMN_NAME_NAME, nameTask);
-                    values.put(TableEntry.COLUMN_NAME_DESCRIPTION, descTask);
-                    values.put(TableEntry.COLUMN_NAME_PRIORITY, prio);
-                    values.put(TableEntry.COLUMN_NAME_DATE, dateTask);
-                    values.put(TableEntry.COLUMN_NAME_DONE, 0);
+                    values.put(COLUMN_NAME_NAME, nameTask);
+                    values.put(COLUMN_NAME_DESCRIPTION, descTask);
+                    values.put(COLUMN_NAME_PRIORITY, prio);
+                    values.put(COLUMN_NAME_DATE, dateSelected);
+                    values.put(COLUMN_NAME_DONE, 0);
 
-                    long newRowId = db.insert(TableEntry.TABLE_NAME, null, values);
+                    long newRowId = db.insert(TABLE_NAME, null, values);
 
                     Intent retour = new Intent();
                     retour.putExtra("valeur",getString(R.string.task_added));
@@ -104,5 +112,6 @@ public class AddActivity extends AppCompatActivity{
                 finish();
             }
         });
+
     }
 };
