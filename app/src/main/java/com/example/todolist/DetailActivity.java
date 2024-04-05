@@ -45,7 +45,7 @@ public class DetailActivity extends AppCompatActivity{
 
         fieldName.setText(tache.getNom());
         fieldDesc.setText(tache.getDesc());
-        fieldPrio.setText(tache.getPriorite());
+        fieldPrio.setText(tache.prioriteString(this));
         fieldDate.setText(tache.getDate());
 
         TasksDBHelper dbHelper = new TasksDBHelper(this);

@@ -1,5 +1,7 @@
 package com.example.todolist;
 
+import android.content.Context;
+
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -7,11 +9,11 @@ public class Task implements Serializable {
     private int id;
     private String nom;
     private String desc;
-    private String priorite;
+    private int priorite;
     private String date;
     private boolean statut;
 
-    public Task(int id, String nom, String desc, String priorite, String date){
+    public Task(int id, String nom, String desc, int priorite, String date){
         this.id = id;
         this.nom = nom;
         this.desc = desc;
@@ -36,11 +38,11 @@ public class Task implements Serializable {
         this.statut = statut;
     }
 
-    public String getPriorite() {
+    public int getPriorite() {
         return priorite;
     }
 
-    public void setPriorite(String priorite) {
+    public void setPriorite(int priorite) {
         this.priorite = priorite;
     }
 
@@ -64,11 +66,28 @@ public class Task implements Serializable {
         return date;
     }
 
+    public String prioriteString(Context context){
+        int priorite = this.getPriorite();
+        String prioString = "";
+        switch(priorite){
+            case 2:
+                prioString = context.getString(R.string.high);
+                break;
+            case 1:
+                prioString = context.getString(R.string.normal);
+                break;
+            case 0:
+                prioString = context.getString(R.string.low);
+                break;
+        }
+        return prioString;
+    }
+
     public void setDate(String date) {
         this.date = date;
     }
     @Override
     public String toString(){
-        return this.nom + '\n' + this.date + " | " + this.priorite.toString();
+        return this.nom + '\n' + this.date + " | " + this.priorite;
     }
 }
